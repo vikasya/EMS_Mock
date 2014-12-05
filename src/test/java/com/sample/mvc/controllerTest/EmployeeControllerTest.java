@@ -7,8 +7,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -19,10 +17,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.sample.mvc.controller.EmployeeController;
 import com.sample.mvc.init.BaseTestConfig;
-import com.sample.mvc.service.EmployeeService;
-
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
@@ -38,12 +33,12 @@ public class EmployeeControllerTest {
 	private WebApplicationContext wac;
 	
 	
-	 @Mock
+	/* @Mock
 	 private EmployeeService employeeService;
 	 
 	    @InjectMocks
 	    private EmployeeController employeeController;
-	 
+	 */
 	    private MockMvc mockMvc;
 	 
 	    @Before
