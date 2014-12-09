@@ -10,6 +10,7 @@ import org.springframework.web.servlet.view.UrlBasedViewResolver;
 @Configuration
 @ComponentScan("com.sample.mvc")
 @EnableWebMvc
+
 public class BaseTestConfig {
 	
 	@Bean

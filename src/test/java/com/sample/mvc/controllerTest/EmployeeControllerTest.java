@@ -7,6 +7,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -17,28 +19,27 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
+import com.sample.mvc.controller.EmployeeController;
 import com.sample.mvc.init.BaseTestConfig;
+import com.sample.mvc.service.EmployeeService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration(classes=BaseTestConfig.class)
-/*@ContextConfiguration(locations = {
-		 "classpath:test-context.xml",
-		"classpath*:/WEB-INF/employee-servlet.xml"})
-*/
-@Transactional
+//@ContextConfiguration(classes=BaseTestConfig.class)
+@ContextConfiguration(locations = {"classpath*:/WEB-INF/employee-servlet.xml"})
+
+//@Transactional
 public class EmployeeControllerTest {
 	
-	@Autowired
-	private WebApplicationContext wac;
+//	@Autowired
+//	private WebApplicationContext wac;
 	
 	
-	/* @Mock
+	 @Mock
 	 private EmployeeService employeeService;
-	 
 	    @InjectMocks
 	    private EmployeeController employeeController;
-	 */
+	 
 	    private MockMvc mockMvc;
 	 
 	    @Before
@@ -48,20 +49,17 @@ public class EmployeeControllerTest {
 	        MockitoAnnotations.initMocks(this);
 	 
 	        // Setup Spring test in standalone mode
-	        this.mockMvc = MockMvcBuilders.standaloneSetup(wac).build();
+	        this.mockMvc = MockMvcBuilders.standaloneSetup(employeeController).build();
 }
 	    
 	    @Test
 	    public void testAddEmployee() throws Exception {
-	     
-	       
-	     
+	     	        
 	        this.mockMvc.perform(post("/add")
 	                .param("code", "101")
 	                .param("name", "mvcfirst")
 	                .param("city", "mvclastname"))
-	                .andExpect(status().isOk())
-	                .andExpect(view().name("list"))
+	                .andExpect(view().name("redirect:list"))
 	                .andExpect(model().attributeExists("employeeCommand"));
 	     
 	    }
