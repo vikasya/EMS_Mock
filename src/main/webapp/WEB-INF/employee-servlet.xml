@@ -67,5 +67,5 @@
 
 	<bean id="employeeDAO" class="com.sample.mvc.dao.EmployeeDAOImpl"> </bean>
 	<bean id="employeeService" class="com.sample.mvc.service.EmployeeServiceImpl"> </bean>
-	<bean class="org.springframework.mock.web.MockServletContext"/>
+	<!-- <bean class="org.springframework.mock.web.MockServletContext"/> -->
 </beans>

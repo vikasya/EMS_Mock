@@ -240,7 +240,7 @@
 					<url>http://localhost:8090/manager/text</url>
 					<username>admin</username>
 					<password>admin</password>
-					<path>/EMS_Hibernate1</path>
+					<path>/EMS_Hibernate11</path>
 				</configuration>
 
 				<executions>
