@@ -37,7 +37,7 @@ public class EmployeeController {
 		return new ModelAndView("redirect:list");
 	}
 	 
-	@RequestMapping(value = "/edit/{code}")
+	@RequestMapping(value = "/edit/{code}" ,method = RequestMethod.POST)
 	public String getEmployeeById(@PathVariable ("code") Integer empCode, Model model) {
 		EmployeeCommand employee = employeeService.getEmployeebyId(empCode);
 		model.addAttribute("employee", employee);
