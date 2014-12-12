@@ -1,7 +1,11 @@
 class { '::mysql::server':
-	root_password    => 'root',
-   override_options => { 'mysqld' => { 'max_connections' => '1024' } }
+	override_options => { 'mysqld' => { 'max_connections' => '1024' } }
 }
+
+#exec{'Creating User':
+#        command=>"CREATE USER 'root'@'localhost' IDENTIFIED BY 'root'",
+#		before=>Exec['Followup scripts'],
+#}
 
 exec{'Followup scripts':
         command=>"/usr/bin/mysql < /tmp/mywar/Dump_test.sql",
