@@ -12,13 +12,13 @@ package{'tomcat7':
 }
 
 
-service{'tomcat':
+service{'tomcat7':
         ensure=>running,
         require=>Package['tomcat7'],
         }
 
 file {'/var/lib/tomcat7/webapps/EmployeeApplication.war':
         source=>"/tmp/mywar/EmployeeApplication.war",
-        require=>Service['tomcat'],
+        require=>Service['tomcat7'],
 }
 
