@@ -8,7 +8,7 @@
 
 package{'tomcat7':
         ensure=>installed,
-        before=>Service['tomcat'],
+        before=>Service['tomcat7'],
 }
 
 
