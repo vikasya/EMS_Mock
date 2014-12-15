@@ -8,10 +8,13 @@ class { '::mysql::server':
 #}
 
 exec{'Grant Script':
-	command => "GRANT ALL ON *.* TO 'root'@'localhost'",
-	before => Exec['Followup scripts'],
-	}
+        command => "GRANT ALL ON *.* TO 'root'@'localhost'",
+        path => "/usr/bin/mysql",
+        before => Exec['Followup scripts'],
+        }
 
+
+	## Added grant scripts part
 exec{'Followup scripts':
        # command=>"/usr/bin/mysql < /tmp/mywar/Dump_test.sql",
 	   command => "/usr/bin/mysql < /tmp/mywar/Dump_test.sql",
