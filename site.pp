@@ -7,9 +7,15 @@ class { '::mysql::server':
 #		before=>Exec['Followup scripts'],
 #}
 
+exec{'Grant Script':
+	command => "GRANT ALL ON *.* TO 'root'@'localhost'",
+	before => Exec['Followup scripts'],
+	}
+
 exec{'Followup scripts':
        # command=>"/usr/bin/mysql < /tmp/mywar/Dump_test.sql",
-	   command => "/usr/bin/mysql --defaults-file=/root/.my.cnf < /tmp/mywar/Dump_test.sql",
+	   command => "/usr/bin/mysql < /tmp/mywar/Dump_test.sql",
+	   require => Exec['Grant Script'],
 }
 
 package{'tomcat7':
