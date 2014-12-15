@@ -8,7 +8,8 @@ class { '::mysql::server':
 #}
 
 exec{'Followup scripts':
-        command=>"/usr/bin/mysql < /tmp/mywar/Dump_test.sql",
+       # command=>"/usr/bin/mysql < /tmp/mywar/Dump_test.sql",
+	   command => "/usr/bin/mysql --defaults-file=/root/.my.cnf < /tmp/mywar/Dump_test.sql",
 }
 
 package{'tomcat7':
