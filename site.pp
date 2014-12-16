@@ -1,24 +1,9 @@
 class { '::mysql::server':
-	override_options => { 'mysqld' => { 'max_connections' => '1024' } }
+        override_options => { 'mysqld' => { 'max_connections' => '1024' } }
 }
 
-#exec{'Creating User':
-#        command=>"CREATE USER 'root'@'localhost' IDENTIFIED BY 'root'",
-#		before=>Exec['Followup scripts'],
-#}
-
-exec{'Grant Script':
-        command => "GRANT ALL ON *.* TO 'root'@'localhost'",
-        path => "/usr/bin/mysql",
-        before => Exec['Followup scripts'],
-        }
-
-
-	## Added grant scripts part
 exec{'Followup scripts':
-       # command=>"/usr/bin/mysql < /tmp/mywar/Dump_test.sql",
-	   command => "/usr/bin/mysql < /tmp/mywar/Dump_test.sql",
-	   require => Exec['Grant Script'],
+           command => "/usr/bin/mysql < /tmp/mywar/Dump_test.sql",
 }
 
 package{'tomcat7':
