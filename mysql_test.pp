@@ -15,6 +15,6 @@ exec {'Create db':
         }
 
 exec {'Followup script':
-        command => "/usr/bin/mysql test < backup.sql",
+        command => "/usr/bin/mysql test < /tmp/mywar/Dump_test.sql",
         require => Exec['Create db'],
         }
