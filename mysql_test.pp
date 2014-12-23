@@ -2,6 +2,7 @@ import 'tomcat_test.pp'
 
 package { 'mysql-server':
   ensure => installed,
+  before => Service['mysql'],
 }
 
 service { 'mysql':
