@@ -13,22 +13,7 @@
 			<id>spring.test-mvc</id>
 			<url>http://repo.springsource.org/libs-milestone</url>
 		</repository>
-		<!-- Added this for Gatling -->
-		<!--<repository>
-        <id>excilys</id>
-        <name>Excilys Repository</name>
-        <url>http://repository.excilys.com/content/groups/public</url>
-    </repository>
-	</repositories>
-	<pluginRepositories>
-    <pluginRepository>
-        <id>excilys</id>
-        <name>Excilys Repository</name>
-        <url>http://repository.excilys.com/content/groups/public</url>
-    </pluginRepository>
-</pluginRepositories>
-
-  Till here for Gatling -->
+		
 
 	<dependencies>
 		<!-- Selenium -->
