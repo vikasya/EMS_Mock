@@ -22,18 +22,18 @@ class EMSHome extends Simulation {
     .pause(1)
     .exec(http("request_edit submit")
       .post("http://172.27.59.5:8080/EmployeeApplication/edit.htm")
-      .formParam("""code""", """1""")
-      .formParam("""name""", """b""")
-      .formParam("""city""", """c"""))
+      .param("""code""", """1""")
+      .param("""name""", """b""")
+      .param("""city""", """c"""))
     .pause(1)
     .exec(http("request_delete")
       .get("http://172.27.59.5:8080/EmployeeApplication/delete.jsp?code=1"))
     .pause(10)
     .exec(http("request_delete submit")
       .post("http://172.27.59.5:8080/EmployeeApplication/delete.htm")
-      .formParam("""code""", """1"""))
+      .param("""code""", """1"""))
 
-  setUp(scn.inject(rampUsers(100) over (10 seconds)))
+  setUp(scn.inject(ramp(100 users) over (10 seconds)))
   //  setUp(scn.inject(atOnceUsers(100)))
   // your code ends here
 }
