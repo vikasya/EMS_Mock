@@ -14,7 +14,7 @@
 			<url>http://repo.springsource.org/libs-milestone</url>
 		</repository>
 		<!-- Added this for Gatling -->
-		<repository>
+		<!--<repository>
         <id>excilys</id>
         <name>Excilys Repository</name>
         <url>http://repository.excilys.com/content/groups/public</url>
@@ -28,7 +28,7 @@
     </pluginRepository>
 </pluginRepositories>
 
- <!-- Till here for Gatling -->
+  Till here for Gatling -->
 
 	<dependencies>
 		<!-- Selenium -->
@@ -39,13 +39,13 @@
 			<version>2.42.2</version>
 		</dependency>
 		
-		<!-- Gatling -->
+		<!-- Gatling
 		<dependency>
         <groupId>com.excilys.ebi.gatling.highcharts</groupId>
         <artifactId>gatling-charts-highcharts</artifactId>
         <version>2.0.1</version>
         <scope>test</scope>
-		</dependency>
+		</dependency> -->
 		
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
@@ -239,7 +239,7 @@
 		<plugins>
 		
 		<!-- Gatling -->
-		<plugin>
+		<!--<plugin>
 				<groupId>io.gatling</groupId>
 				<artifactId>gatling-maven-plugin</artifactId>
 				<version>2.0.1</version>
@@ -252,7 +252,7 @@
 						<configuration>
 							<!-- Default values -->
 							<!--<configFolder>src/test/resources</configFolder-->
-							<dataFolder>src/test/resources/data</dataFolder>
+							<!--<dataFolder>src/test/resources/data</dataFolder>
 							<resultsFolder>target/gatling/results</resultsFolder>
 							<requestBodiesFolder>src/test/resources/request-bodies</requestBodiesFolder>
 							<simulationsFolder>src/test/scala</simulationsFolder>
@@ -261,7 +261,7 @@
 				</executions>
 			</plugin>
 			
-			<!-- Till here for Gatling -->
+			 Till here for Gatling -->
 			
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
