@@ -33,7 +33,7 @@ class EMSHome extends Simulation {
       .post("http://172.27.59.5:8080/EmployeeApplication/delete.htm")
       .formParam("""code""", """1"""))
 
-  setUp(scn.inject(ramp(100 users) over (10 seconds)))
+  setUp(scn.inject(rampUsers(100) over (10 seconds)))
   //  setUp(scn.inject(atOnceUsers(100)))
   // your code ends here
 }
