@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.alm.web</groupId>
-	<artifactId>EmployeeApplicationSprint4</artifactId>
+	<artifactId>EmployeeApplicationSprint</artifactId>
 	<packaging>war</packaging>
 	<version>1.0-SNAPSHOT</version>
 	<name>Employee Management System</name>
@@ -13,7 +13,22 @@
 			<id>spring.test-mvc</id>
 			<url>http://repo.springsource.org/libs-milestone</url>
 		</repository>
+		<!-- Added this for Gatling -->
+		<repository>
+        <id>excilys</id>
+        <name>Excilys Repository</name>
+        <url>http://repository.excilys.com/content/groups/public</url>
+    </repository>
 	</repositories>
+	<pluginRepositories>
+    <pluginRepository>
+        <id>excilys</id>
+        <name>Excilys Repository</name>
+        <url>http://repository.excilys.com/content/groups/public</url>
+    </pluginRepository>
+</pluginRepositories>
+
+ <!-- Till here for Gatling -->
 
 	<dependencies>
 		<!-- Selenium -->
@@ -23,7 +38,9 @@
 			<artifactId>selenium-firefox-driver</artifactId>
 			<version>2.42.2</version>
 		</dependency>
-
+		
+		
+		
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-server</artifactId>
@@ -106,7 +123,11 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
-
+<dependency>
+    <groupId>io.gatling.highcharts</groupId>
+    <artifactId>gatling-charts-highcharts</artifactId>
+    <version>2.0.0-M3a</version>
+</dependency>
 
 		<dependency>
 			<groupId>javax.servlet.jsp.jstl</groupId>
@@ -122,12 +143,12 @@
 			<version>1.7.5</version>
 			<scope>runtime</scope>
 		</dependency>
-		<dependency>
+		<!--<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>1.7.5</version>
 			<scope>runtime</scope>
-		</dependency>
+		</dependency>-->
 
 		<dependency>
 			<groupId>org.apache.commons</groupId>
@@ -214,6 +235,32 @@
 	<build>
 		<finalName>EmployeeApplication</finalName>
 		<plugins>
+		
+		<!-- Gatling -->
+		<plugin>
+				<groupId>io.gatling</groupId>
+				<artifactId>gatling-maven-plugin</artifactId>
+				<version>2.0.0-M3a</version>
+				<executions>
+					<execution>
+						<phase>test</phase>
+						<goals>
+							<goal>execute</goal>
+						</goals>
+						<configuration>
+							<!-- Default values -->
+							<!--<configFolder>src/test/resources</configFolder-->
+							<dataFolder>src/test/resources/data</dataFolder>
+							<resultsFolder>target/gatling/results</resultsFolder>
+							<requestBodiesFolder>src/test/resources/request-bodies</requestBodiesFolder>
+							<simulationsFolder>src/test/scala</simulationsFolder>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			
+			<!-- Till here for Gatling -->
+			
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -224,6 +271,8 @@
 					<target>1.7</target>
 				</configuration>
 			</plugin>
+				
+								
 
 			<plugin>
 				<groupId>com.atlassian.maven.plugins</groupId>
@@ -255,16 +304,16 @@
 				</executions>
 			</plugin>
 
-			<plugin>
+		<!--	<plugin>
 				<groupId>org.apache.tomcat.maven</groupId>
 				<artifactId>tomcat7-maven-plugin</artifactId>
 				<version>2.1</version>
 				<configuration>
 					<server>myserver</server>
-					<url>http://localhost:8012/manager/text</url>
+					<url>http://localhost:8090/manager/text</url>
 					<username>admin</username>
 					<password>admin</password>
-					<path>/EMS_Hibernate1</path>
+					<path>/EMS_Hibernate01</path>
 				</configuration>
 
 				<executions>
@@ -289,7 +338,7 @@
 
 
 				</executions>
-			</plugin>
+			</plugin>   -->
 
 
 
@@ -341,23 +390,32 @@
 					<version>2.10</version>
 
 
-					
+					<!-- <configuration> <excludes> <exclude>**/EmployeeControllerTest.java</exclude> 
+						<exclude>**/EmployeeAddControllerTest.java</exclude> </excludes> </configuration> -->
+					<configuration>
+						<!-- Skip the normal tests, we'll run them in the integration-test 
+							phase <skip>true</skip> -->
+
+						<skip>true</skip>
+						<excludes>
+							<exclude>**/EmployeeDeleteSeleniumTest.java</exclude>
+							<exclude>**/EmployeeAddSeleniumTest.java</exclude>
+							<exclude>**/EmployeeEditSeleniumTest.java</exclude>
+						</excludes>
+					</configuration>
 					<executions>
 						<execution>
-							<phase>test</phase>
+							<phase>validate</phase>
 							<goals>
 								<goal>test</goal>
 							</goals>
-							<!-- <configuration>
-								<excludes>
-								<exclude>**/EmployeeControllerTest.java</exclude>
-								<exclude>**/com.sample.mvc.service/</exclude>
-								<exclude>**/com.sample.mvc.dao/</exclude>
-							</excludes>
+							<configuration>
+								<skip>true</skip>
 
-							</configuration>  -->
+							</configuration>
 						</execution>
-					</executions>  
+					</executions>
+
 
 				</plugin>
 			</plugins>
