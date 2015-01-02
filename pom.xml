@@ -405,7 +405,7 @@
 					</configuration>
 					<executions>
 						<execution>
-							<phase>test</phase>
+							<phase>validate</phase>
 							<goals>
 								<goal>test</goal>
 							</goals>
