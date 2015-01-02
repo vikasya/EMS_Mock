@@ -18,7 +18,7 @@ public class EmployeeEditSeleniumTest {
   @Before
   public void setUp() throws Exception {
     driver = new FirefoxDriver();
-    baseUrl = "http://localhost:8090/EMS_Hibernate11/list";
+    baseUrl = "http://172.27.59.13:8080/EmployeeApplication/list";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
 
@@ -26,7 +26,7 @@ public class EmployeeEditSeleniumTest {
   public void testEdit() throws Exception {
     driver.get(baseUrl + "");
    
-    driver.findElement(By.xpath("(//a[contains(text(),'edit')])[3]")).click();
+    driver.findElement(By.xpath("(//a[contains(text(),'edit')])[1]")).click();
     driver.findElement(By.name("name")).clear();
     driver.findElement(By.name("name")).sendKeys("Ruuuu");
     driver.findElement(By.name("city")).clear();

@@ -19,7 +19,7 @@ public class EmployeeDeleteSeleniumTest {
   @Before
   public void setUp() throws Exception {
     driver = new FirefoxDriver();
-    baseUrl = "http://localhost:8090/EMS_Hibernate11/list";
+    baseUrl = "http://172.27.59.13:8080/EmployeeApplication/list";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
 
@@ -27,7 +27,7 @@ public class EmployeeDeleteSeleniumTest {
   public void testEdit() throws Exception {
     driver.get(baseUrl + "");
    
-    driver.findElement(By.xpath("(//a[contains(text(),'delete')])[4]")).click();
+    driver.findElement(By.xpath("(//a[contains(text(),'delete')])[1]")).click();
 
    
   }

@@ -16,7 +16,7 @@ public class EmployeeAddSeleniumTest {
 	@Before
 	public void setUp() throws Exception {
 		driver = new FirefoxDriver();
-		baseUrl = "http://localhost:8090/EMS_Hibernate11/add.jsp";
+		baseUrl = "http://172.27.59.13:8080/EmployeeApplication/jsp/add.jsp";
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}
 
@@ -24,7 +24,7 @@ public class EmployeeAddSeleniumTest {
 	public void testCheck() throws Exception {
 		driver.get(baseUrl + "");
 	    driver.findElement(By.name("code")).clear();
-	    driver.findElement(By.name("code")).sendKeys("112");
+	    driver.findElement(By.name("code")).sendKeys("281");
 	    driver.findElement(By.name("name")).clear();
 	    driver.findElement(By.name("name")).sendKeys("Rahul");
 	    driver.findElement(By.name("city")).clear();
