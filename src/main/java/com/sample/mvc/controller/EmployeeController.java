@@ -30,14 +30,14 @@ public class EmployeeController {
 	    return "list";
 	}
 	 
-	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	@RequestMapping(value = "/jsp/add", method = RequestMethod.POST)
 	public ModelAndView addEmployee(
 			@ModelAttribute EmployeeCommand employeeCommand) {
 		employeeService.addEmployee(employeeCommand);
-		return new ModelAndView("redirect:list");
+		return new ModelAndView("redirect:/list");
 	}
 	 
-	@RequestMapping(value = "/edit/{code}" ,method = RequestMethod.POST)
+	@RequestMapping(value = "/edit/{code}")
 	public String getEmployeeById(@PathVariable ("code") Integer empCode, Model model) {
 		EmployeeCommand employee = employeeService.getEmployeebyId(empCode);
 		model.addAttribute("employee", employee);
